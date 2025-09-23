@@ -1,0 +1,513 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f9f5;
+  color: #2e3d2f;
+  text-align: center;
+}
+
+header {
+  padding: 1em;
+  background-color: #dcefdc;
+}
+
+nav a {
+  margin: 0 1em;
+  color: #356859;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 2em;
+  background-color: #ffffff;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #356859;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2e4e3f;
+}
+
+footer {
+  margin-top: 2em;
+  padding: 1em;
+  background-color: #e9f3e9;
+  font-size: 0.9em;
+}
+.about {
+  max-width: 700px;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.about h2, .about h3 {
+  color: #356859;
+}
+
+.about ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about ul li {
+  padding: 0.5em 0;
+}
+.shop {
+  padding: 2em;
+  background-color: #ffffff;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.product-card {
+  background-color: #f0f7f0;
+  border-radius: 12px;
+  padding: 1em;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin-top: 0.7em;
+  color: #356859;
+}
+
+.product-card p {
+  color: #555;
+}
+.contact {
+  max-width: 600px;
+  margin: 2em auto;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.contact h2 {
+  color: #356859;
+  margin-bottom: 1em;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.whatsapp-link {
+  display: inline-block;
+  background-color: #25D366;
+  color: white;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 0.7em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+form button {
+  background-color: #356859;
+  color: white;
+  border: none;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #2e4e3f;
+}
+.gallery {
+  padding: 2em;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.gallery h2 {
+  color: #356859;
+  margin-bottom: 1.5em;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5em;
+  padding: 0 1em;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+.email-link {
+  display: inline-block;
+  background-color: #356859;
+  color: white;
+  padding: 0.7em 1.2em;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.email-link:hover {
+  background-color: #2e4e3f;
+}
+
+/* Make content flow nicely on small screens */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Responsive nav */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+/* Image gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1em;
+  padding: 1em;
+}
+
+.gallery-grid img,
+.gallery-grid iframe {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Form responsiveness */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 500px;
+  margin: auto;
+  padding: 1em;
+}
+
+input, textarea {
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+button {
+  background-color: #356859;
+  color: white;
+  border: none;
+  padding: 0.8em;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2e4e3f;
+}
+
+/* Email link */
+.email-link {
+  display: block;
+  text-align: center;
+  margin: 1em auto;
+  width: max-content;
+}
+/* === Product Detail Page Styles === */
+.product-detail {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9fdf9;
+  border: 1px solid #cfe3d7;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-detail h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.product-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.product-detail p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.product-detail strong {
+  color: #1b5e20;
+}
+
+/* Optional: Add a subtle button style */
+.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #81c784;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #66bb6a;
+}
+/* Flex layout for product details */
+.product-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-flex img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.product-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.product-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #2e7d32;
+}
+
+.product-info p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.4rem;
+  background-color: #81c784;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #66bb6a;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .product-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-info {
+    padding: 0 1rem;
+  }
+}
+
+
+/* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background-color: #f5f9f5; /* soft light green */
+  color: #2e3d2f; /* dark greenish brown */
+  padding: 10px;
+}
+
+/* Header Styles */
+header {
+  background-color: #dcefdc; /* light minty green */
+  color: #2e3d2f;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #356859; /* deep green */
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Form Section */
+main.contact-form {
+  background-color: #ffffff;
+  max-width: 600px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+main.contact-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #356859; /* deep green */
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #356859; /* button green */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #2e4e3f; /* darker hover */
+}
+
+/* Total Price Display */
+#total {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #2e4e3f; /* consistent with button hover */
+  text-align: right;
+}
+
+/* Footer */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  padding: 15px;
+  background-color: #e9f3e9; /* softest green */
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #4e6e52;
+}

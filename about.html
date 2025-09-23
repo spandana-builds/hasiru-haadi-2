@@ -1,68 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | Hasiru Haadi</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <title>About Us | Hasiru Haadi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style/about.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- ROOT VARIABLES (Consistent with homepage) --- */
+        :root {
+            --dark-green: #2F4F2F; /* Deep Forest Green */
+            --accent-gold: #D4AF37; /* Gold/Ochre */
+            --background-ivory: #FFFAF0; /* Floral White/Ivory */
+            --light-green-bg: #f0f4f0;
+            --text-dark: #333333;
+            --text-light-gray: #555;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        /* --- GENERAL STYLES (Consistent with homepage) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-ivory);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+        
+        strong {
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        /* --- HEADER & FOOTER (Identical to homepage) --- */
+        header {
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        header h1 img {
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover img {
+            transform: scale(1.1);
+        }
+
+        header p {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        nav a {
+            color: var(--dark-green);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-gold);
+            transition: width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        nav a:hover {
+            color: var(--text-dark);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background: #e7e2d9;
+            color: var(--text-light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- ABOUT PAGE SPECIFIC STYLES --- */
+        .page-title-section {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        .page-title-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--dark-green);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 2rem auto 6rem auto;
+            padding: 0 5%;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light-gray);
+        }
+
+        .about-image {
+            height: 500px;
+            border-radius: 10px;
+            background: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2574&auto=format&fit=crop') no-repeat center center/cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+            transition: transform 0.4s ease;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.03);
+        }
+
+        .beliefs-section {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: var(--light-green-bg);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .beliefs-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .beliefs-section ul {
+            list-style: none;
+        }
+        
+        .beliefs-section li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            color: var(--text-light-gray);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Staggered animation for list items */
+        .beliefs-section li:nth-child(1) { animation-delay: 0.3s; }
+        .beliefs-section li:nth-child(2) { animation-delay: 0.5s; }
+        .beliefs-section li:nth-child(3) { animation-delay: 0.7s; }
+        
+        .beliefs-section li::before {
+            content: attr(data-icon); /* Use emoji from data-icon attribute */
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            margin-top: 0.1rem;
+        }
+        
+        /* --- KEYFRAMES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .about-image {
+                height: 350px;
+                grid-row: 1; /* Move image to the top on mobile */
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-content">
-      <h1 class="logo">
-        <img src="images/logo.png" alt="Hasiru Haadi Logo" class="logo-img" />
-        <span>Hasiru Haadi | ಹಸಿರು ಹಾದಿ</span>
-      </h1>
-      <p class="tagline">Handpicked | Home-grown | Eco-love</p>
-      
-      <!-- Navigation -->
-      <nav class="navbar">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header>
+    <h1><img src="images/logo.png" alt="Hasiru Haadi Logo" style="height: 40px; vertical-align: middle;"> Hasiru Haadi | ಹಸಿರು ಹಾದಿ</h1>
+    <p>Handpicked | Home-grown | Eco-love</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <!-- About Section -->
   <main>
-    <section class="about container">
-      <h2>About Us</h2>
-      <p><strong>Hasiru Haadi</strong> means <em>"The Green Path"</em> — a journey rooted in love for nature, handmade creations, and mindful living. 🌱</p>
-      
-      <p>We are two sisters who started this small initiative to bring a little more green and a little more goodness into the world — through live plants, seeds, natural soaps, and simple home-grown products that are kind to the earth.</p>
-
-      <p>Every item is handpicked or handmade with care, packed with heart, and delivered with gratitude.</p>
-
-      <p>Whether you're a plant lover, nature enthusiast, or someone curious about sustainable living — welcome! You're walking the green path with us 🌿</p>
-
-      <h3>Our Beliefs</h3>
-      <ul class="beliefs-list">
-        <li>🌼 <strong>Nature is our home</strong> — we cherish and protect it.</li>
-        <li>🧵 <strong>Simplicity is beauty</strong> — we keep our designs and products minimal.</li>
-        <li>🤝 <strong>Community is strength</strong> — we believe in supporting local and growing together.</li>
-      </ul>
+    <section class="page-title-section">
+        <h2>Our Story</h2>
     </section>
+    
+    <div class="about-container">
+        <div class="about-text">
+            <p><strong>Hasiru Haadi</strong> means "The Green Path" — a journey rooted in love for nature, handmade creations, and mindful living. 🌱</p>
+            
+            <p>We're two sisters from Bengaluru who started this small initiative to bring a little more green and a little more goodness into the world. Our path began with simple home-grown products—live plants, seeds, and natural soaps—all kind to the earth and crafted with intention.</p>
+  
+            <p>Every item is handpicked or handmade with care, packed with heart, and delivered with gratitude. Whether you're a seasoned plant lover, a nature enthusiast, or simply curious about sustainable living, we welcome you. You're walking the green path with us.</p>
+
+            <div class="beliefs-section">
+                <h3>Our Beliefs</h3>
+                <ul>
+                  <li data-icon="🌼">Nature is our home — we cherish and protect it.</li>
+                  <li data-icon="🧵">Simplicity is beauty — we keep our designs and products minimal.</li>
+                  <li data-icon="🤝">Community is strength — we believe in supporting local and growing together.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="about-image">
+            </div>
+    </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 Hasiru Haadi | ಹಸಿರು ಹಾದಿ — All Rights Reserved</p>
-    </div>
+  <footer>
+    <p>© 2025 Hasiru Haadi | ಹಸಿರು ಹಾದಿ — All Rights Reserved</p>
   </footer>
 </body>
 </html>

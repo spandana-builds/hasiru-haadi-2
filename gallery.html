@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery | Hasiru Haadi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- ROOT VARIABLES (Consistent with other pages) --- */
+        :root {
+            --dark-green: #2F4F2F; /* Deep Forest Green */
+            --accent-gold: #D4AF37; /* Gold/Ochre */
+            --background-ivory: #FFFAF0; /* Floral White/Ivory */
+            --text-dark: #333333;
+            --text-light-gray: #555;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        /* --- GENERAL STYLES (Consistent with other pages) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background-ivory);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        /* --- HEADER & FOOTER (Identical to other pages) --- */
+        header {
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        header h1 img {
+            transition: transform 0.3s ease;
+        }
+
+        header h1:hover img {
+            transform: scale(1.1);
+        }
+
+        header p {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        nav a {
+            color: var(--dark-green);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-gold);
+            transition: width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        nav a:hover {
+            color: var(--text-dark);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background: #e7e2d9;
+            color: var(--text-light-gray);
+            font-size: 0.9rem;
+            margin-top: 6rem;
+        }
+
+        /* --- GALLERY PAGE SPECIFIC STYLES --- */
+        .gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5% 6rem;
+            text-align: center;
+        }
+        
+        .gallery h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--dark-green);
+            margin-bottom: 4rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 250px;
+            grid-auto-flow: dense; /* Helps fill in gaps */
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+        
+        /* Staggered animation for gallery items */
+        .gallery-item:nth-child(1)  { animation-delay: 0.05s; }
+        .gallery-item:nth-child(2)  { animation-delay: 0.10s; }
+        .gallery-item:nth-child(3)  { animation-delay: 0.15s; }
+        .gallery-item:nth-child(4)  { animation-delay: 0.20s; }
+        .gallery-item:nth-child(5)  { animation-delay: 0.25s; }
+        .gallery-item:nth-child(6)  { animation-delay: 0.30s; }
+        .gallery-item:nth-child(7)  { animation-delay: 0.35s; }
+        .gallery-item:nth-child(8)  { animation-delay: 0.40s; }
+        .gallery-item:nth-child(9)  { animation-delay: 0.45s; }
+        .gallery-item:nth-child(10) { animation-delay: 0.50s; }
+        .gallery-item:nth-child(11) { animation-delay: 0.55s; }
+        .gallery-item:nth-child(12) { animation-delay: 0.60s; }
+        .gallery-item:nth-child(13) { animation-delay: 0.65s; }
+        .gallery-item:nth-child(14) { animation-delay: 0.70s; }
+        .gallery-item:nth-child(15) { animation-delay: 0.75s; }
+        .gallery-item:nth-child(16) { animation-delay: 0.80s; }
+        .gallery-item:nth-child(17) { animation-delay: 0.85s; }
+        .gallery-item:nth-child(18) { animation-delay: 0.90s; }
+
+
+        /* Masonry layout styling */
+        .gallery-item:nth-child(odd):not(.tall) { /* Makes some odd items wider, but not if they are already tall */
+             grid-column: span 2;
+        }
+        .gallery-item:nth-child(even):not(.wide) { /* Makes some even items taller, but not if they are already wide */
+             grid-row: span 2;
+        }
+        /* Specific overrides for more control, adjust as needed */
+        .gallery-item:nth-child(5) { grid-column: span 2; grid-row: span 2; } /* Big item */
+        .gallery-item:nth-child(11) { grid-column: span 2; }
+        .gallery-item:nth-child(14) { grid-row: span 2; }
+
+
+        .gallery-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* --- BUTTON (Consistent with homepage) --- */
+        .btn {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 4rem;
+            font-weight: 600;
+            border: 2px solid var(--accent-gold);
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Responsive adjustments for masonry */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-auto-rows: 200px;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller min-width for mobile */
+            }
+            /* Reset all custom spans on smaller screens to allow auto-flow to re-distribute */
+            .gallery-item {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+            /* You can re-introduce some basic spanning for visual interest on smaller screens if desired */
+            .gallery-item:nth-child(3n+1) { /* Make every 3rd item span 2 columns on mobile */
+                grid-column: span 2 !important;
+            }
+            .gallery-item:nth-child(4n+2) { /* Make every 4th item span 2 rows on mobile */
+                grid-row: span 2 !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Single column on very small screens */
+                grid-auto-rows: 250px;
+            }
+            .gallery-item {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+  <header>
+    <h1><img src="images/logo.png" alt="Hasiru Haadi Logo" style="height: 40px; vertical-align: middle;">
+        Hasiru Haadi | ಹಸಿರು ಹಾದಿ</h1>
+    <p>Handpicked | Home-grown | Eco-love</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shop.html">Shop</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <h2>Our Green Moments</h2>
+
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/i1.jpg" alt="Packing Orders"></div>
+        <div class="gallery-item"><img src="images/i2.jpg" alt="Jackfruit Harvest"></div>
+        <div class="gallery-item"><img src="images/i3.jpg" alt="Plant Display"></div>
+        <div class="gallery-item"><img src="images/i4.jpg" alt="Nature Photo"></div>
+        <div class="gallery-item"><img src="images/i5.jpg" alt="Eco Gift Pack"></div>
+        <div class="gallery-item"><img src="images/i6.jpg" alt="Mini Plant Shelf"></div>
+        <div class="gallery-item"><img src="images/i7.jpg" alt="Close up of a green leaf"></div>
+        <div class="gallery-item"><img src="images/i8.jpg" alt="Handmade soap bars"></div>
+        <div class="gallery-item"><img src="images/i9.jpg" alt="A variety of potted succulents"></div>
+        <div class="gallery-item"><img src="images/i10.jpg" alt="Person holding a sapling"></div>
+        <div class="gallery-item"><img src="images/i11.jpg" alt="Freshly watered plants"></div>
+        <div class="gallery-item"><img src="images/i12.jpg" alt="Herbs growing in a garden"></div>
+        <div class="gallery-item"><img src="images/i13.jpg" alt="Freshly picked vegetables"></div>
+        <div class="gallery-item"><img src="images/i14.jpg" alt="Botanical illustration art"></div>
+        <div class="gallery-item"><img src="images/i15.jpg" alt="Seed packets arranged neatly"></div>
+        <div class="gallery-item"><img src="images/i16.jpg" alt="A succulent arrangement in a rustic pot"></div>
+        <div class="gallery-item"><img src="images/i17.jpg" alt="Someone tending to a small garden bed"></div>
+        <div class="gallery-item"><img src="images/i18.jpg" alt="Close up of a vibrant flower in bloom"></div>
+      </div>
+
+      <a href="https://www.instagram.com/hasiruhaadi" target="_blank" class="btn">
+        View More on Instagram
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Hasiru Haadi | ಹಸಿರು ಹಾದಿ — All Rights Reserved</p>
+  </footer>
+</body>
+</html>
