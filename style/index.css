@@ -1,0 +1,209 @@
+:root {
+  --primary: #3A7D44;    /* Rich Forest Green */
+  --accent: #F4C95D;     /* Warm Sunlight Gold */
+  --bg-light: #FAFAF7;   /* Soft Natural Off-White */
+  --dark: #2C3E2F;       /* Deep Earth Green */
+  --text: #333333;       /* Neutral Charcoal Gray */
+  --white: #ffffff;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-light);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.site-header {
+  background: var(--primary);
+  color: var(--white);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: slideDown 0.8s ease forwards;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img { height: 45px; }
+
+.tagline { font-size: 0.9rem; margin-top: 4px; color: var(--accent); }
+
+/* Navbar */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover,
+.navbar a.active { color: var(--accent); transform: translateY(-2px); }
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: url('../images/hero-bg.jpg') center/cover no-repeat;
+  color: var(--white);
+  position: relative;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(rgba(58,125,68,0.5), rgba(44,62,47,0.3));
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: auto;
+  animation: slideUp 1.5s ease forwards;
+}
+
+.hero h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; }
+.hero blockquote { font-style: italic; margin: 1em 0; }
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark);
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 1.2rem 0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Animations */
+@keyframes slideDown { 0% { transform: translateY(-100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
+.tree-animation {
+  position: relative;
+  width: 80px;  /* wider container for leaves */
+  height: 150px;
+  margin: 2rem auto;
+}
+
+/* Seed */
+.seed {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: brown;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  animation: growSeed 1s ease-out forwards;
+}
+
+/* Stem */
+.stem {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 4px;
+  height: 0;
+  background: var(--primary);
+  transform: translateX(-50%);
+  animation: growStem 2s 1s ease-out forwards;
+}
+
+/* Leaves */
+.leaf {
+  position: absolute;
+  bottom: 60px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid var(--primary);
+  animation: growLeaf 1s 3s ease-out forwards, sway 2s ease-in-out 4s infinite alternate;
+}
+
+/* Correct leaf positions relative to stem */
+.leaf:nth-child(3) { left: 30%; transform: rotate(-20deg) scaleY(0); animation-delay: 3.2s, 4s; }
+.leaf:nth-child(4) { left: 50%; transform: rotate(0deg) scaleY(0); animation-delay: 3.4s, 4s; }
+.leaf:nth-child(5) { left: 70%; transform: rotate(20deg) scaleY(0); animation-delay: 3.6s, 4s; }
+
+/* Keyframes */
+@keyframes growSeed { to { transform: translateX(-50%) scale(1); } }
+@keyframes growStem { to { height: 60px; } }
+@keyframes growLeaf { to { transform: scaleY(1) rotate(0deg); } }
+@keyframes sway { 0%,100%{transform: rotate(0deg);} 50%{transform: rotate(5deg);} }
+.tree-animation {
+  position: relative;
+  width: 80px;
+  height: 150px;
+  margin: 0 0 1.5rem 0; /* bottom margin for spacing */
+}
+.hero-content {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertical centering */
+  min-height: 400px; /* adjust based on hero section height */
+}
